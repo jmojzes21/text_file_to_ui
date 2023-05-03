@@ -49,6 +49,7 @@
     <Compile Include="Assistant.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserDisplayer.cs" />
     <Compile Include="UserFileReader.cs" />
     <Compile Include="UserInfoController.cs" />
     <Compile Include="UserInfoForm.cs">

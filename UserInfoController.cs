@@ -18,7 +18,8 @@ namespace TextFileToUi {
             UserParser parser = new UserParser();
             User user = parser.Parse(lines);
 
-            MessageBox.Show(user.ToString());
+            UserDisplayer displayer = new UserDisplayer(form);
+            displayer.DisplayUser(user);
 
         }
 

@@ -28,6 +28,14 @@ namespace TextFileToUi {
             return $"{Name}, {Surname}, {BirthYear}, {BirthCity}, {Faculty}";
         }
 
+        public static Student asStudent(User user) {
+            return (Student)user;
+        }
+
+        public static Assistant asAssistant(User user) {
+            return (Assistant)user;
+        }
+
     }
 
 }

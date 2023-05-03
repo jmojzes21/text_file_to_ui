@@ -25,7 +25,7 @@ namespace TextFileToUi {
                     user = new Student();
 
                     string course = ParseLine(source[6], "Najdraži kolegij");
-                    ((Student)user).FavoriteCourse = course;
+                    User.asStudent(user).FavoriteCourse = course;
 
                     break;
 
@@ -34,7 +34,7 @@ namespace TextFileToUi {
                     user = new Assistant();
 
                     string dep = ParseLine(source[6], "Katedra");
-                    ((Assistant)user).Department = dep;
+                    User.asAssistant(user).Department = dep;
 
                     break;
             }
