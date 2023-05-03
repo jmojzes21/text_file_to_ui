@@ -28,7 +28,6 @@ namespace TextFileToUi
             string path = openFileDialog.FileName;
             try {
                 controller.LoadUser(path);
-                MessageBox.Show("User is successfully loaded", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch (Exception) {
                 MessageBox.Show($"Can't load user from ${path}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
