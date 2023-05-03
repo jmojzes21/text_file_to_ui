@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace TextFileToUi {
     internal class UserInfoController {
 
@@ -13,7 +15,10 @@ namespace TextFileToUi {
             UserFileReader reader = new UserFileReader(path);
             string[] lines = reader.ReadUser();
 
+            UserParser parser = new UserParser();
+            User user = parser.Parse(lines);
 
+            MessageBox.Show(user.ToString());
 
         }
 

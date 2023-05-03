@@ -1,27 +1,33 @@
 ﻿
+using System.Text;
+
 namespace TextFileToUi {
     public abstract class User {
 
-        public string Name;
-        public string Surname;
-        public int BirthYear;
-        public string BirthCity;
-        public string Faculty;
+        public string Name = "";
+        public string Surname = "";
+        public int BirthYear = 0;
+        public string BirthCity = "";
+        public string Faculty = "";
 
-        private UserRole role;
+        private readonly UserRole role;
 
         public User(UserRole role) {
             this.role = role;
         }
 
-        UserRole GetRole() {
+        public UserRole GetRole() {
             return role;
         }
 
-        string FullName() {
-            return $"${Name} ${Surname}";
+        public string FullName() {
+            return $"{Name} {Surname}";
         }
-        
+
+        public override string ToString() {
+            return $"{Name}, {Surname}, {BirthYear}, {BirthCity}, {Faculty}";
+        }
+
     }
 
 }
