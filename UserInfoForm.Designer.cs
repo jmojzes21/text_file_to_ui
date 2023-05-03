@@ -1,6 +1,6 @@
 ﻿namespace TextFileToUi
 {
-    partial class MainForm
+    partial class UserInfoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -165,8 +165,9 @@
             this.btnOpen.TabIndex = 19;
             this.btnOpen.Text = "Open file";
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // MainForm
+            // UserInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,7 +187,7 @@
             this.Controls.Add(this.lblRole);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainForm";
+            this.Name = "UserInfoForm";
             this.ShowIcon = false;
             this.Text = "User data display";
             this.ResumeLayout(false);
@@ -197,19 +198,19 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Label lblFullName;
-        private System.Windows.Forms.Label lblBirthYear;
-        private System.Windows.Forms.Label lblFaculty;
-        private System.Windows.Forms.Label lblBirthCity;
-        private System.Windows.Forms.Label lblRoleSpecificAttr;
-        private System.Windows.Forms.Label lblRole;
-        private System.Windows.Forms.TextBox txtFullName;
-        private System.Windows.Forms.TextBox txtBirthYear;
-        private System.Windows.Forms.TextBox txtBirthCity;
-        private System.Windows.Forms.TextBox txtFaculty;
-        private System.Windows.Forms.TextBox txtRole;
-        private System.Windows.Forms.TextBox txtRoleSpecificAttr;
         private System.Windows.Forms.Button btnOpen;
+        public System.Windows.Forms.Label lblFullName;
+        public System.Windows.Forms.Label lblBirthYear;
+        public System.Windows.Forms.Label lblFaculty;
+        public System.Windows.Forms.Label lblBirthCity;
+        public System.Windows.Forms.Label lblRoleSpecificAttr;
+        public System.Windows.Forms.Label lblRole;
+        public System.Windows.Forms.TextBox txtFullName;
+        public System.Windows.Forms.TextBox txtBirthYear;
+        public System.Windows.Forms.TextBox txtBirthCity;
+        public System.Windows.Forms.TextBox txtFaculty;
+        public System.Windows.Forms.TextBox txtRole;
+        public System.Windows.Forms.TextBox txtRoleSpecificAttr;
     }
 }
 

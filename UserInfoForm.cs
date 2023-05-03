@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace TextFileToUi
 {
-    public partial class MainForm : Form
+    public partial class UserInfoForm : Form
     {
-        public MainForm()
+
+        private UserInfoController controller;
+        public UserInfoForm()
         {
             InitializeComponent();
+            controller = new UserInfoController(this);
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e) {
+            
         }
     }
 }
