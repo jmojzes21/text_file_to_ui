@@ -13,5 +13,14 @@ namespace TextFileToUi {
             this.form = form;
         }
 
+        public void LoadUser(string path) {
+
+            UserFileReader reader = new UserFileReader(path);
+            string[] lines = reader.ReadUser();
+
+
+
+        }
+
     }
 }

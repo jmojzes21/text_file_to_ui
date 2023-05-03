@@ -15,7 +15,7 @@ namespace TextFileToUi {
             this.path = path;
         }
 
-        public string[] readUser() {
+        public string[] ReadUser() {
             return File.ReadAllLines(path);
         }
 
