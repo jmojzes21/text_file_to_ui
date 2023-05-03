@@ -21,6 +21,12 @@ namespace TextFileToUi
         }
 
         private void btnOpen_Click(object sender, EventArgs e) {
+
+            DialogResult result = openFileDialog.ShowDialog(this);
+            if (result != DialogResult.OK) return;
+            
+            MessageBox.Show(openFileDialog.FileName);
+            
             
         }
     }

@@ -46,7 +46,7 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Title = "Select user file";
             // 
             // lblFullName
             // 
