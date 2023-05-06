@@ -51,6 +51,7 @@
     <Compile Include="User.cs" />
     <Compile Include="UserDisplayer.cs" />
     <Compile Include="UserFileReader.cs" />
+    <Compile Include="UserFileWriter.cs" />
     <Compile Include="UserInfoController.cs" />
     <Compile Include="UserInfoForm.cs">
       <SubType>Form</SubType>

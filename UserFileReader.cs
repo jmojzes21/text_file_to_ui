@@ -2,7 +2,7 @@
 using System.IO;
 
 namespace TextFileToUi {
-    internal class UserFileReader {
+    public class UserFileReader {
 
         private string path;
 
