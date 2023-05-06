@@ -15,24 +15,16 @@ namespace TextFileToUi {
             form.txtBirthYear.Text = user.BirthYear.ToString();
             form.txtBirthCity.Text = user.BirthCity.ToString();
             form.txtFaculty.Text = user.Faculty.ToString();
-            form.txtRole.Text = user.GetRole().ToString();
-
-            switch(user.GetRole()) {
+            form.txtRole.Text = user.RoleAsString();
+            
+            switch(user.Role) {
                 case UserRole.Student:
-
-                    form.txtRole.Text = "Student";
-
                     form.lblRoleSpecificAttr.Text = "Favorite course";
-                    form.txtRoleSpecificAttr.Text = User.asStudent(user).FavoriteCourse;
-
+                    form.txtRoleSpecificAttr.Text = User.AsStudent(user).FavoriteCourse;
                     break;
                 case UserRole.Assistant:
-
-                    form.txtRole.Text = "Asistent";
-
                     form.lblRoleSpecificAttr.Text = "Department";
-                    form.txtRoleSpecificAttr.Text = User.asAssistant(user).Department;
-
+                    form.txtRoleSpecificAttr.Text = User.AsAssistant(user).Department;
                     break;
             }
 

@@ -1,11 +1,14 @@
 ﻿
 using System;
-using System.Windows.Forms;
+using System.Collections.Generic;
+using TextFileToUi.Utils;
 
 namespace TextFileToUi {
     public class UserInfoController {
 
-        private UserInfoForm form;
+        private static string FileAccessCounterKeyName = "Datoteci pristupljeno puta";
+
+        private readonly UserInfoForm form;
 
         public UserInfoController(UserInfoForm form) {
             this.form = form;
@@ -14,39 +17,34 @@ namespace TextFileToUi {
         public void LoadUser(string path) {
 
             UserFileReader reader = new UserFileReader(path);
-            string[] lines = reader.ReadUser();
-
-            if(lines.Length < 8) {
-                throw new Exception("Invalid file format");
-            }
-
-            IncrementFileAccessCounter(lines, path);
+            var map = reader.ReadUser();
 
             UserParser parser = new UserParser();
-            User user = parser.Parse(lines);
+            User user = parser.Parse(map);
+
+            IncrementFileAccessCounter(map, user, path);
 
             UserDisplayer displayer = new UserDisplayer(form);
             displayer.DisplayUser(user);
 
         }
 
-        private void IncrementFileAccessCounter(string[] lines, string path) {
+        private void IncrementFileAccessCounter(Dictionary<string, string> map, User user, string path) {
 
-            const int lineIndex = 7;
-            string line = lines[lineIndex];
-
-            if(line.StartsWith("Datoteci pristupljeno puta") == false) {
-                throw new Exception("Can't increment file access counter");
+            if(map.ContainsKey(FileAccessCounterKeyName) == false) {
+                throw new Exception($"Invalid file format, can't find value for key {FileAccessCounterKeyName}");
             }
 
-            string[] temp = line.Split('=');
-            int counter = int.Parse(temp[1]);
+            int counter = int.Parse(map[FileAccessCounterKeyName]);
             counter++;
 
-            lines[lineIndex] = $"Datoteci pristupljeno puta={counter}";
+            UserSerializer userSerializer = new UserSerializer();
+            var lines = userSerializer.SerializeUser(user);
+
+            lines.Add($"{FileAccessCounterKeyName}={counter}");
 
             UserFileWriter writer = new UserFileWriter(path);
-            writer.WriteUser(lines);
+            writer.WriteUser(lines.ToArray());
 
         }
 

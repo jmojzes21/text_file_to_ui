@@ -1,31 +1,32 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace TextFileToUi {
     public class UserParser {
 
         public UserParser() {}
 
-        public User Parse(string[] source) {
+        public User Parse(Dictionary<string, string> source) {
 
-            string name = ParseLine(source[0], "Ime");
-            string surname = ParseLine(source[1], "Prezime");
-            int birthYear = int.Parse(ParseLine(source[2], "Godina rođenja"));
-            string birthCity = ParseLine(source[3], "Grad rođenja");
-            string faculty = ParseLine(source[4], "Fakultet");
+            string firstName = GetValueFromMap(source, User.FirstNameKeyName);
+            string lastName = GetValueFromMap(source, User.LastNameKeyName);
+            int birthYear = int.Parse(GetValueFromMap(source, User.BirthYearKeyName));
+            string birthCity = GetValueFromMap(source, User.BirthCityKeyName);
+            string faculty = GetValueFromMap(source, User.FacultyKeyName);
 
-            string roleAsString = ParseLine(source[5], "Uloga");
+            string roleAsString = GetValueFromMap(source, User.RoleKeyName);
             UserRole role = ParseRole(roleAsString);
 
             User user = null;
 
-            switch(role) {
+            switch (role) {
                 case UserRole.Student:
 
                     user = new Student();
 
-                    string course = ParseLine(source[6], "Najdraži kolegij");
-                    User.asStudent(user).FavoriteCourse = course;
+                    string course = GetValueFromMap(source, Student.FavoriteCourseKeyName);
+                    User.AsStudent(user).FavoriteCourse = course;
 
                     break;
 
@@ -33,45 +34,37 @@ namespace TextFileToUi {
 
                     user = new Assistant();
 
-                    string dep = ParseLine(source[6], "Katedra");
-                    User.asAssistant(user).Department = dep;
+                    string dep = GetValueFromMap(source, Assistant.DepartmentKeyName);
+                    User.AsAssistant(user).Department = dep;
 
                     break;
             }
 
-            user.Name = name;
-            user.Surname = surname;
+            user.FirstName = firstName;
+            user.LastName = lastName;
             user.BirthYear = birthYear;
             user.BirthCity = birthCity;
             user.Faculty = faculty;
 
             return user;
-
+            
         }
 
-        private string ParseLine(string source, string prefix) {
-
-            if(source.StartsWith(prefix) == false) {
-                throw new Exception("Invalid file format");
+        private string GetValueFromMap(Dictionary<string, string> map, string key) {
+            if(map.ContainsKey(key) == false) {
+                throw new Exception($"Invalid file format, can't find value for key {key}");
             }
-
-            string[] temp = source.Split('=');
-            if(temp.Length != 2 ) {
-                throw new Exception("Invalid file format");
-            }
-
-            return temp[1];
-
+            return map[key];
         }
 
-        private UserRole ParseRole(string source) {
-            switch(source.ToLower()) {
+        private UserRole ParseRole(string role) {
+            switch(role.ToLower()) {
                 case "student":
                     return UserRole.Student;
                 case "asistent":
                     return UserRole.Assistant;
                 default:
-                    throw new Exception("Invalid file format");
+                    throw new Exception($"Invalid file format, unknown role {role}");
             }
             
         }

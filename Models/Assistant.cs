@@ -1,7 +1,9 @@
 ﻿namespace TextFileToUi {
     public class Assistant : User {
 
-        public string Department = "";
+        public static string DepartmentKeyName = "Katedra";
+
+        public string Department { get; set; }
 
         public Assistant() : base(UserRole.Assistant) {}
 

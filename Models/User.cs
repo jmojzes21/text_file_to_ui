@@ -1,38 +1,53 @@
 ﻿
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace TextFileToUi {
     public abstract class User {
 
-        public string Name = "";
-        public string Surname = "";
-        public int BirthYear = 0;
-        public string BirthCity = "";
-        public string Faculty = "";
+        public static string FirstNameKeyName = "Ime";
+        public static string LastNameKeyName = "Prezime";
+        public static string BirthYearKeyName = "Godina rođenja";
+        public static string BirthCityKeyName = "Grad rođenja";
+        public static string FacultyKeyName = "Fakultet";
+        public static string RoleKeyName = "Uloga";
 
-        private readonly UserRole role;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int BirthYear { get; set; }
+        public string BirthCity { get; set; }
+        public string Faculty { get; set; }
+        public UserRole Role { get; }
 
         public User(UserRole role) {
-            this.role = role;
-        }
-
-        public UserRole GetRole() {
-            return role;
+            Role = role;
         }
 
         public string FullName() {
-            return $"{Name} {Surname}";
+            return $"{FirstName} {LastName}";
         }
 
         public override string ToString() {
-            return $"{Name}, {Surname}, {BirthYear}, {BirthCity}, {Faculty}";
+            return $"{FirstName}, {LastName}, {BirthYear}, {BirthCity}, {Faculty}";
         }
 
-        public static Student asStudent(User user) {
+        public string RoleAsString() {
+            switch(Role) {
+                case UserRole.Student:
+                    return "student";
+                case UserRole.Assistant:
+                    return "asistent";
+            }
+            return null;
+        }
+
+        public static Student AsStudent(User user) {
             return (Student)user;
         }
 
-        public static Assistant asAssistant(User user) {
+        public static Assistant AsAssistant(User user) {
             return (Assistant)user;
         }
 

@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\UserParser.cs" />
     <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Utils\UserSerializer.cs" />
     <EmbeddedResource Include="Forms\UserInfoForm.resx">
       <DependentUpon>UserInfoForm.cs</DependentUpon>
     </EmbeddedResource>

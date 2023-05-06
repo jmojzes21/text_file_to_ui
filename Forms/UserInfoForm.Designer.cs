@@ -145,6 +145,7 @@
             this.txtRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txtRole.Location = new System.Drawing.Point(165, 268);
             this.txtRole.Name = "txtRole";
+            this.txtRole.ReadOnly = true;
             this.txtRole.Size = new System.Drawing.Size(309, 22);
             this.txtRole.TabIndex = 17;
             // 

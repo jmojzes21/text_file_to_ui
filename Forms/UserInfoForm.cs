@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TextFileToUi
@@ -28,8 +21,8 @@ namespace TextFileToUi
             string path = openFileDialog.FileName;
             try {
                 controller.LoadUser(path);
-            } catch (Exception) {
-                MessageBox.Show($"Can't load user from ${path}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } catch (Exception ex) {
+                MessageBox.Show($"Can't load user from \"{path}\"\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

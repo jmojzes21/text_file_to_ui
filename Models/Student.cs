@@ -2,7 +2,9 @@
 namespace TextFileToUi {
     public class Student : User {
 
-        public string FavoriteCourse = "";
+        public static string FavoriteCourseKeyName = "Najdraži kolegij";
+
+        public string FavoriteCourse { get; set; }
 
         public Student() : base(UserRole.Student) {}
 
